@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { TaskFormComponent } from './components/task-form/task-form.component'; 
+import { FilterTodosPipe } from './filter-todos.pipe';
+import { SearchPipe } from './search.pipe'; 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,       
+    TodoComponent,     
+    TaskFormComponent,  
+    FilterTodosPipe, SearchPipe   
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule,      
+    FormsModule,       
+    ReactiveFormsModule 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

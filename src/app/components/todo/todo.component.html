@@ -1,0 +1,10 @@
+<div class="task">
+  <h4 class="task-title ">{{ title }}</h4>
+  <p class="task-description">{{ description }}</p>
+  <select [(ngModel)]="status" class="task-status">
+    <option value="To Do">To Do</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Done">Done</option>
+  </select>
+  <button (click)="onDelete()" class="delete-btn">Delete</button>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+  <form (ngSubmit)="addTask()" class="task-form">
+    <input type="text" [(ngModel)]="newTask.title" name="title" placeholder="Task title" required />
+    <textarea [(ngModel)]="newTask.description" name="description" placeholder="Task description" required></textarea>
+    <select [(ngModel)]="newTask.status" name="status">
+      <option value="To Do">To Do</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Done">Done</option>
+    </select>
+    <button type="submit" class="submit-btn">Add Task</button>
+  </form>
+</div>
