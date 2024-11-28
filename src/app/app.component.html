@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>TO-DO LIST</h1>
+
+  <!-- Add Task -->
+  <app-task-form (addTaskEvent)="addTask($event)"></app-task-form>
+
+  <!-- Search Task -->
+
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search tasks..." class="search-input" />
+  </div>
+  
+
+  <!-- Section Task -->
+  <div class="tasks">
+    <div class="section to-do">
+      <h3 class="header to-do">To Do</h3>
+      <app-todo *ngFor="let todo of todos | filterTodos: 'To Do'" [description]="todo.description" [title]="todo.title"
+        [status]="todo.status" [id]="todo.id" (deleteTask)="deleteTask($event)"></app-todo>
+    </div>
+
+    <div class="section in-progress">
+      <h2 class="header">In Progress</h2>
+      <app-todo *ngFor="let todo of todos | filterTodos: 'In Progress'" [description]="todo.description"
+        [title]="todo.title" [status]="todo.status" [id]="todo.id" (deleteTask)="deleteTask($event)"></app-todo>
+    </div>
+
+    <div class="section done">
+      <h2 class="header">Done</h2>
+      <app-todo *ngFor="let todo of todos | filterTodos: 'Done'" [description]="todo.description" [title]="todo.title"
+        [status]="todo.status" [id]="todo.id" (deleteTask)="deleteTask($event)"></app-todo>
+    </div>
+
+    <!-- Lista de tareas filtradas y buscadas -->
+    <select [(ngModel)]="selectedStatus">
+      <option value="To Do">To Do</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Completed">Completed</option>
+    </select>
+    
+    <!-- Lista de tareas filtradas y buscadas -->
+    <ul>
+      <li *ngFor="let task of tasks | search: searchTerm | filterTodos: selectedStatus">
+        {{ task.title }} - {{ task.status }}
+      </li>
+    </ul>
+  </div>
+</div>
